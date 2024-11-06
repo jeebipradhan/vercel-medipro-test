@@ -63,7 +63,7 @@ export default function Component() {
                   Welcome to Medipro Computers
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Empower your team with our cutting-edge software solutions. Boost productivity and streamline your processes.
+                  30 years of Software Excellence
                 </p>
               </div>
               <div className="space-x-4">
