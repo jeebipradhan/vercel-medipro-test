@@ -115,7 +115,7 @@ export default function Component() {
                   <Input className="max-w-lg flex-1" placeholder="Enter your email" type="email" />
                   <Button type="submit">Subscribe</Button>
                 </form>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-red-500 dark:text-red-400">
                   By subscribing, you agree to our Terms of Service and Privacy Policy.
                 </p>
               </div>
