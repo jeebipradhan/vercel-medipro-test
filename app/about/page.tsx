@@ -4,17 +4,12 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Menu, Hospital, BarChart2, Package, Users, Clock } from "lucide-react"
+import Header from '../header'
+
 
 export default function AboutPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const menuItems = [
-    { name: "About", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Customers", href: "#customers" },
-    { name: "Download", href: "#download" },
-    { name: "Contact", href: "#contact" },
-  ]
 
   const features = [
     { icon: Hospital, title: "Hospital Management" },
@@ -26,42 +21,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-900 to-blue-900 text-white">
-      {/* Navigation */}
-      <nav className="p-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold tracking-tight hover:text-teal-300 transition-colors">MEDIPRO</a>
-          <div className="hidden md:flex space-x-6">
-            {menuItems.map((item, index) => (
-              <a key={index} href={item.href} className="hover:text-teal-300 transition-colors">{item.name}</a>
-            ))}
-          </div>
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-blue-900/95 z-10 flex flex-col items-center justify-center space-y-8">
-          {menuItems.map((item, index) => (
-            <a key={index} href={item.href} className="text-2xl hover:text-teal-300 transition-colors">{item.name}</a>
-          ))}
-          <Button 
-            variant="outline" 
-            onClick={() => setIsMenuOpen(false)}
-            className="mt-8"
-          >
-            Close
-          </Button>
-        </div>
-      )}
-
+      <Header />
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-12">
         <h1 className="text-5xl font-bold mb-8 text-center">About MEDIPRO</h1>
