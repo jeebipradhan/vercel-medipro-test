@@ -1,139 +1,102 @@
-// /pages/page.tsx
-
-import { Code, Laptop, Zap } from "lucide-react"; // Ensure lucide-react is installed
-import Link from "next/link";
-
-// Simple Button component
-const Button = ({ children, variant = "default", ...props }: {
-  children: React.ReactNode;
-  variant?: "default" | "outline";
-  [key: string]: any;
-}) => {
-  const baseStyle = "px-4 py-2 font-semibold rounded-md";
-  const variantStyle = variant === "outline"
-    ? "border border-gray-300 text-gray-700"
-    : "bg-blue-500 text-white";
-
-  return (
-    <button className={`${baseStyle} ${variantStyle}`} {...props}>
-      {children}
-    </button>
-  );
-};
-
-// Simple Input component
-const Input = ({ ...props }) => {
-  return (
-    <input
-      className="border rounded-md px-4 py-2"
-      {...props}
-    />
-  );
-};
+"use client"
+import { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import { Hospital, BarChart2, Package, Play, Menu } from "lucide-react"
 
 export default function Component() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link className="flex items-center justify-center" href="#">
-          <Zap className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Features
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Pricing
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            About
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Contact
-          </Link>
-        </nav>
-      </header>
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Welcome to Medipro Computers PVT LTD
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                  30 years of Software Excellence
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Button>Get Started</Button>
-                <Button variant="outline">Learn More</Button>
+    <div className="min-h-screen bg-gradient-to-br from-teal-900 to-blue-900 text-white relative overflow-hidden">
+      {/* Navigation */}
+      <nav className="absolute top-0 left-0 right-0 p-6 z-20">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <span className="text-2xl font-bold tracking-tight">MEDIPRO</span>
+          <div className="hidden md:flex space-x-6">
+            <a href="#" className="hover:text-teal-300 transition-colors">Features</a>
+            <a href="#" className="hover:text-teal-300 transition-colors">Pricing</a>
+            <a href="#" className="hover:text-teal-300 transition-colors">About</a>
+            <a href="#" className="hover:text-teal-300 transition-colors">Contact</a>
+          </div>
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-blue-900/95 z-10 flex flex-col items-center justify-center space-y-8">
+          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">Features</a>
+          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">Pricing</a>
+          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">About</a>
+          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">Contact</a>
+          <Button 
+            variant="outline" 
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-8"
+          >
+            Close
+          </Button>
+        </div>
+      )}
+
+      {/* Main Content */}
+      <div className="relative min-h-screen flex items-center">
+        {/* Abstract Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-1/2 -left-1/4 w-full h-full bg-teal-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -bottom-1/2 -right-1/4 w-full h-full bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        </div>
+        
+        {/* Content */}
+        <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Streamline Your Hospital Operations
+              </h1>
+              <p className="text-xl mb-8 text-teal-100">
+                Powerful accounting and inventory management software tailored for modern healthcare facilities.
+              </p>
+              <div className="flex space-x-4">
+                <Button className="bg-teal-500 hover:bg-teal-600 text-blue-900 font-semibold">
+                  Get Started
+                </Button>
+                <Button variant="outline" className="text-white border-white hover:bg-white/10">
+                  <Play className="mr-2 h-4 w-4" /> Watch Demo
+                </Button>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Features</h2>
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12">
-              <div className="flex flex-col items-center space-y-4">
-                <Laptop className="h-12 w-12 text-primary" />
-                <h3 className="text-xl font-bold">Cloud-Based Solution</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-center">
-                  Access your work from anywhere, anytime. Our cloud-based platform ensures your data is always at your fingertips.
-                </p>
+            <div className="relative">
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { icon: Hospital, title: "Hospital Management" },
+                    { icon: BarChart2, title: "Financial Analytics" },
+                    { icon: Package, title: "Inventory Tracking" },
+                    { icon: Play, title: "Training Resources" }
+                  ].map((item, index) => (
+                    <div key={index} className="flex flex-col items-center text-center">
+                      <div className="bg-gradient-to-br from-teal-400 to-blue-500 p-3 rounded-full mb-4">
+                        <item.icon className="h-8 w-8 text-blue-900" />
+                      </div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col items-center space-y-4">
-                <Code className="h-12 w-12 text-primary" />
-                <h3 className="text-xl font-bold">Advanced Analytics</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-center">
-                  Gain valuable insights with our powerful analytics tools. Make data-driven decisions to propel your business forward.
-                </p>
-              </div>
-              <div className="flex flex-col items-center space-y-4">
-                <Zap className="h-12 w-12 text-primary" />
-                <h3 className="text-xl font-bold">Seamless Integration</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-center">
-                  Easily integrate with your existing tools and workflows. Our software adapts to your needs, not the other way around.
-                </p>
-              </div>
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full blur-2xl opacity-50" />
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full blur-2xl opacity-50" />
             </div>
           </div>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Stay Updated</h2>
-                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Subscribe to our newsletter for the latest updates and exclusive offers.
-                </p>
-              </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex space-x-2">
-                  <Input className="max-w-lg flex-1" placeholder="Enter your email" type="email" />
-                  <Button type="submit">Subscribe</Button>
-                </form>
-                <p className="text-xs text-red-500 dark:text-red-400">
-                  By subscribing, you agree to our Terms of Service and Privacy Policy.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Acme Inc. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
