@@ -1,22 +1,32 @@
 "use client"
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
-import { Hospital, BarChart2, Package, Play, Menu } from "lucide-react"
+import { Hospital, BarChart2, Package, Play, Menu, Users, Clock } from "lucide-react"
+import Link from 'next/link'
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const menuItems = [
+    { name: "About", href: "/about" },
+    { name: "Products", href: "#products" },
+    { name: "Customers", href: "#customers" },
+    { name: "Download", href: "#download" },
+    { name: "Contact", href: "#contact" },
+  ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-900 to-blue-900 text-white relative overflow-hidden">
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 p-6 z-20">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <span className="text-2xl font-bold tracking-tight">MEDIPRO</span>
+          <Link href="/">
+            <span className="text-2xl font-bold tracking-tight">MEDIPRO</span>
+          </Link>
           <div className="hidden md:flex space-x-6">
-            <a href="#" className="hover:text-teal-300 transition-colors">Features</a>
-            <a href="#" className="hover:text-teal-300 transition-colors">Pricing</a>
-            <a href="#" className="hover:text-teal-300 transition-colors">About</a>
-            <a href="#" className="hover:text-teal-300 transition-colors">Contact</a>
+            {menuItems.map((item, index) => (
+              <a key={index} href={item.href} className="hover:text-teal-300 transition-colors">{item.name}</a>
+            ))}
           </div>
           <Button 
             variant="ghost" 
@@ -32,10 +42,9 @@ export default function Component() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-blue-900/95 z-10 flex flex-col items-center justify-center space-y-8">
-          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">Features</a>
-          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">Pricing</a>
-          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">About</a>
-          <a href="#" className="text-2xl hover:text-teal-300 transition-colors">Contact</a>
+          {menuItems.map((item, index) => (
+            <a key={index} href={item.href} className="text-2xl hover:text-teal-300 transition-colors">{item.name}</a>
+          ))}
           <Button 
             variant="outline" 
             onClick={() => setIsMenuOpen(false)}
@@ -62,7 +71,7 @@ export default function Component() {
                 Streamline Your Hospital Operations
               </h1>
               <p className="text-xl mb-8 text-teal-100">
-                Powerful accounting and inventory management software tailored for modern healthcare facilities.
+                Powerful accounting, inventory management, payroll, and attendance software tailored for modern healthcare facilities.
               </p>
               <div className="flex space-x-4">
                 <Button className="bg-teal-500 hover:bg-teal-600 text-blue-900 font-semibold">
@@ -80,6 +89,8 @@ export default function Component() {
                     { icon: Hospital, title: "Hospital Management" },
                     { icon: BarChart2, title: "Financial Analytics" },
                     { icon: Package, title: "Inventory Tracking" },
+                    { icon: Users, title: "Payroll Management" },
+                    { icon: Clock, title: "Attendance Tracking" },
                     { icon: Play, title: "Training Resources" }
                   ].map((item, index) => (
                     <div key={index} className="flex flex-col items-center text-center">
