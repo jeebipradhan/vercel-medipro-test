@@ -14,6 +14,7 @@ export default function AboutPage() {
     { name: "Customers", href: "#customers" },
     { name: "Download", href: "#download" },
     { name: "Contact", href: "#contact" },
+    { name: "Download", href: "#download" },
   ]
 
   const features = [
@@ -29,7 +30,7 @@ export default function AboutPage() {
       {/* Navigation */}
       <nav className="p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold tracking-tight hover:text-teal-300 transition-colors">MEDIPRO</a>
+          <a href="/" className="text-2xl font-bold tracking-tight hover:text-teal-300 transition-colors">MediPro</a>
           <div className="hidden md:flex space-x-6">
             {menuItems.map((item, index) => (
               <a key={index} href={item.href} className="hover:text-teal-300 transition-colors">{item.name}</a>
