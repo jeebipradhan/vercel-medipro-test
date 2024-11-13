@@ -13,6 +13,7 @@ export default function Component() {
     { name: "Customers", href: "#customers" },
     { name: "Download", href: "#download" },
     { name: "Contact", href: "#contact" },
+    { name: "Download", href: "#download" },
   ]
 
   return (
