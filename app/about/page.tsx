@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react'
-import Header from "../../components/Header.tsx";
-import Footer from "../../components/Footer.tsx";
+import Header from "../../components/ui/Header";
+import Footer from "../../components/ui/Footer";
 import { Button } from "../../components/ui/button"
 import { Card, CardContent } from "../../components/ui/card"
 import { Menu, Hospital, BarChart2, Package, Users, Clock } from "lucide-react"
