@@ -14,6 +14,7 @@ export default function Component() {
     { name: "Download", href: "#download" },
     { name: "Contact", href: "#contact" },
     { name: "Download", href: "#download" },
+    { name: "Vacancy", href: "#vacancy" },
   ]
 
   return (
