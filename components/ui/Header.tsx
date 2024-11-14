@@ -15,7 +15,7 @@ const Header = () => {
     { name: "Download", href: "#download" },
     { name: "Contact", href: "#contact" },
     { name: "Vacancy", href: "#vacancy" },
-    { name: "Open PDF", action: () => window.open('gitref.pdf', '_blank') }
+    { name: "Open PDF", action: () => window.open('/gitref.pdf', '_blank') },
   ]
 
   return (
