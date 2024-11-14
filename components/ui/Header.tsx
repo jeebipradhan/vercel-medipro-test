@@ -15,7 +15,7 @@ const Header = () => {
     { name: "Download", href: "#download" },
     { name: "Contact", href: "#contact" },
     { name: "Vacancy", href: "#vacancy" },
-    { name: "Open PDF", action: () => window.open('/gitref.pdf', '_blank') }
+    { name: "Open PDF", action: () => window.open('gitref.pdf', '_blank') }
   ]
 
   return (
@@ -26,7 +26,7 @@ const Header = () => {
           <Link href="/" className="text-2xl font-bold tracking-tight hover:text-teal-300 transition-colors">MediPro</Link>
           <div className="hidden md:flex space-x-6">
             {menuItems.map((item, index) => (
-              <Link key={index} href={item.href} className="hover:text-teal-300 transition-colors">{item.name}</Link>
+              <Link key={index} href={item.href ?? '#'} className="hover:text-teal-300 transition-colors">{item.name}</Link>
             ))}
           </div>
           <Button 
@@ -44,7 +44,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 bg-blue-900/95 z-10 flex flex-col items-center justify-center space-y-8">
           {menuItems.map((item, index) => (
-            <Link key={index} href={item.href} className="text-2xl hover:text-teal-300 transition-colors">{item.name}</Link>
+            <Link key={index} href={item.href ?? '#'} className="text-2xl hover:text-teal-300 transition-colors">{item.name}</Link>
           ))}
           <Button 
             variant="outline" 
